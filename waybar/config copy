@@ -1,0 +1,347 @@
+{
+//层:
+    // "layer": "top",
+
+//位置 TOP, BOTTOM, LEFT, RIGHT:
+    // "position": "bottom",
+
+//高:
+    "height": 10,
+
+//宽:
+     "width": "100%",
+
+//左:
+"modules-left": [
+"custom/right","custom/right2",
+"wlr/taskbar",
+"custom/right","custom/right2",
+"tray",
+"custom/right","custom/right2",
+"network",
+"custom/right","custom/right2","custom/right","custom/right2","custom/right"
+    ],
+
+"modules-center": [
+"custom/left","custom/left2","custom/left",
+"clock#1",
+"custom/left2","custom/left",
+"clock#2",
+"custom/right","custom/right2",
+"clock#3",
+"custom/right","custom/right2","custom/right"
+    ],
+
+"modules-right": [
+"custom/left","custom/left2","custom/left","custom/left2","custom/left",
+"cpu",
+"custom/left2","custom/left",
+"memory",
+"custom/left2","custom/left",
+"battery",
+"custom/left2","custom/left",
+"pulseaudio",
+"custom/left2","custom/left",
+"backlight",
+"custom/left2","custom/left",
+    ],
+
+
+//装饰
+    "custom/left": {
+        "format": "",
+        "tooltip": false,
+    },
+
+    "custom/left2": {
+        "format": "",
+        "tooltip": false,
+    },
+
+    "custom/right": {
+        "format": "",
+        "tooltip": false,
+    },
+
+    "custom/right2": {
+        "format": "",
+        "tooltip": false,
+    },
+
+//程序
+"wlr/taskbar": {
+    "format": "{icon}",
+    "icon-size": 16,
+    "icon-theme": "Papirus-Dark-Custom",
+    "tooltip-format": "{title}",
+    "on-click": "activate",
+    "on-click-middle": "close"
+},
+
+//拖盘
+    "tray": {
+        // "icon-size": 21,
+        "spacing": 10
+    },
+
+//网络
+"network": {
+    "interface": "wlan0",
+    "format-wifi": " |  {bandwidthDownBytes} |  {bandwidthUpBytes}",
+    "format-ethernet": " |  {bandwidthDownBytes} |  {bandwidthUpBytes}",
+    "format-linked": "(No IP)",
+    "format-disconnected": "",
+    "on-click": "kitty -e nmtui",
+    "tooltip": false,
+    "interval": 1
+},
+
+//时间
+    "clock#1": {
+        "format": "{:%A}",
+        "tooltip": false
+    },
+    "clock#2": {
+        "format": "{:%H:%M:%S}",
+        "tooltip": false,
+        "interval": 1
+    },
+    "clock#3": {
+        "format": "{:%m/%d/%Y}",
+        "tooltip": false
+    },
+
+//CPU
+    "cpu": {
+        "format": "  {usage}%",
+        "tooltip": false
+    },
+
+//内存
+    "memory": {
+        "format": "  {}%"
+    },
+
+    "custom/media": {
+        "format": "{icon} {}",
+        "return-type": "json",
+        "max-length": 80,
+        "format-icons": {
+            "spotify": "",
+            "default": "🎜"
+        },
+        "escape": true,
+        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null",
+        "on-click": "playerctl play-pause",
+        "on-scroll-up": "playerctl previous",
+        "on-scroll-down": "playerctl next"
+    },
+
+//电池
+        "battery": {
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": " {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-alt": "{time} {icon}",
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+
+//音频
+    "pulseaudio": {
+        // "scroll-step": 1, // %, can be a float
+        "format": "{icon} {volume}%",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-muted": " {format_source}",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol"
+    },
+
+//背光
+    "backlight": {
+        // "device": "acpi_video1",
+        "format": "{icon} {percent}%",
+        "format-icons": ["", ""]
+    },
+
+      "sway/workspaces": {
+          "disable-scroll": true,
+          "all-outputs": true,
+          "format": "{name}",
+          "format-icons": {
+              "1": "",
+              "2": "",
+              "3": "",
+              "4": "",
+              "5": "",
+             "urgent": "",
+              "focused": "",
+               "default": ""
+          }
+      },
+
+
+
+
+//以下并未使用
+
+
+//НАСТРОЙКА ПОВЕДЕНИЯ КНОПОК ПЕРЕКЛЮЧЕНИЯ ВОРКСПЕЙСОМ, ТРОГАТЬ ТОЛЬКО ЕСЛИ ДОФИГА УМНЫЙ:
+    "sway/mode": {
+        "format": "<span style=\"italic\">{}</span>"
+    },
+
+//ОТОБРАЖЕНИЕ МОДУЛЯ MPD, ФОРМАТЫ И ИКОНКИ, ДУМАЮ САМ ДОГАДАЕШЬСЯ ЧТО ЕСТЬ ЧТО, Я ВОТ НЕ ОСИЛИЛ И ПОЛЬЗУЮСЬ CMUS:
+    "mpd": {
+        "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ ",
+        "format-disconnected": "Disconnected ",
+        "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
+        "unknown-tag": "N/A",
+        "interval": 2,
+        "consume-icons": {
+            "on": " "
+        },
+        "random-icons": {
+            "off": "<span color=\"#f53c3c\"></span> ",
+            "on": " "
+        },
+        "repeat-icons": {
+            "on": " "
+        },
+        "single-icons": {
+            "on": "1 "
+        },
+        "state-icons": {
+            "paused": "",
+            "playing": ""
+        },
+        "tooltip-format": "MPD (connected)",
+        "tooltip-format-disconnected": "MPD (disconnected)"
+    },
+
+//Я ТАК ПОНЯЛ ЧТО ЭТА ХРЕНЬ ДЛЯ БЛОКИРОВКИ МОНИТОРА:
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+    },
+
+
+
+
+
+//ЧАСЫ, ВРЕМЕННАЯ ЗОНА, ФОРМАТ ОТОБРАЖЕНИЯ И ФОРМАТ ОТОБРАЖЕНИЯ ПОСЛЕ НАЖАТИЯ ЛКМ:
+    "clock": {
+        // "timezone": "America/New_York",
+        "format": "{:%A  %H:%M:%S  %m-%d-%Y}",
+    },
+
+
+
+
+//ОТОБРАЖЕНИЕ ИНФЫ С ТЕМПЕРАТУРНЫХ ДАТЧИКОВ, ТАКИХ МОДУЛЕЙ МОЖНО СДЕЛАТЬ НЕСКОЛЬКО И ВЫВЕСТИ НА ПАНЕЛЬ ВСЕ ДАТЧИКИ:
+    "temperature": {
+	//ВЫБОР ДАТЧИКА, ПОСМОТРЕТЬ ДАТЧИКИ МОЖНО ТАК: ls /sys/class/thermal/
+        // "thermal-zone": 2,
+	//ПУТЬ К ДЕРИКТОРИИ УСТРОЙСТВА, МОЖЕШЬ ПОШАРИТСЯ В /sys/class/hwmon/ И НАЙТИ НУЖНОЕ.
+        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+	//КРИТИЧЕСКИЙ ТЕМПЕРАТУРНЫЙ ПОРОГ, ПОСЛЕ ПРОХОЖДЕНИЯ КОТОРОГО WAYBAR ТЕБЕ НАМЕКНЕТ ЧТО ВСЕ ПЛОХО:
+        "critical-threshold": 80,
+	//СОБСТВЕННО ФОРМАТ ВЫВОДА ИНВЫ О ТОМ ЧТО СКОРО ТВОЯ СИСТЕМА РЕСТАРТАНЕТ И СБРОСИТ ЧАСТОТЫ:
+        // "format-critical": "{temperatureC}°C {icon}",
+	//ФОРМАТ ВЫВОДА ТЕМПЕРАТУРЫ, ТЕМПЕРАТУРА, ГРАДУС, ИКОНКА.
+        "format": "{temperatureC}°C {icon}",
+	//ФОРМАТ ИКОНКИ ТЕМПЕРАТУРЫ, ВЫБИРАЕТСЯ В ЗАВИСИМОСТИ ОТ ТЕМПЕРАТУРЫ
+        "format-icons": ["", "", ""]
+    },
+
+
+
+//РАСКЛАДКА КЛАВИАТУРЫ:
+	"sway/language": {
+		"format": "  {}",
+
+		"tooltip": false
+	},
+
+//АККУМУЛЯТОР ДЛЯ МОНИТОРА, ТОЛЬКО ЧТО УЗНАЛ ЧТО ТАКОЕ БЫВАЕТ, КОРОЧ ЯХЗ:
+    "battery#bat2": {
+        "bat": "BAT2"
+    },
+
+
+
+//ОТОБРАЖЕНИЕ АКТИВНОГО ОКНА, ФОРМАТ, МАКСИМАЛЬНАЯ ДЛИНА, МИНИМАЛЬНАЯ ДЛИНА, ПОДЗКАЗКА ПРИ НАВЕДЕНИИ:
+        "sway/window": {
+                "format": "{}",
+		"max-length": 20,
+		"min-length": 20,
+		"tooltip": false
+	},
+
+
+
+//ПОДКЛЮЧЕНИЕ ДОПОЛНИТЕЛЬНЫХ МОДУЛЕЙ, ПРЕЖДЕ ЧЕМ ЧТО-ТО ГОРОДИТЬ ПОМОТРИ КАКИЕ ЕСТЬ ТУТ: https://github.com/Alexays/Waybar/wiki/Module:-Custom
+    "custom/cmus": {
+        "format": "  {}",
+        //"max-length": 15,
+        "interval": 10,
+        "exec": "cmus-remote -C \"format_print '%a - %t'\"", // artist - title
+        "exec-if": "pgrep cmus",
+        "on-click": "cmus-remote -u",                        //toggle pause
+        "escape": true                                       //handle markup entities
+    },
+//НА ВИКИ В МОДУЛЯХ НЕТ В МОДУЛЯХ ВОТ ЭТОЙ ЗАПЯТОЙ В КОНЦЕ, ЕСЛИ ЕЕ ТЕ БУДЕТ ТО WAYBAR НЕ ВЗЛЕТИТ!
+
+
+
+//ЧТО ТО НА ТЕХНИЧЕСКОМ, НЕ ТРОГАЙ ЭТО!
+        "escape": true,
+        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
+        // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
+    }
+},
+
+    "custom/keyboard-layout": {
+      "exec": "swaymsg -t get_inputs | grep -m1 'xkb_active_layout_name' | cut -d '\"' -f4",
+      // Interval set only as a fallback, as the value is updated by signal
+      "interval": 30,
+      "format": "  {}", // Icon: keyboard
+      // Signal sent by Sway key binding (~/.config/sway/key-bindings)
+      "signal": 1, // SIGHUP
+      "tooltip": false
+    },
+
+       "custom/clockx": {
+        // "timezone": "America/New_York",
+        "format": "{:%A  %H:%M:%S  %m-%d-%Y}",
+    },
+
+//РАСКЛАДКА КЛАВИАТУРЫ:
+	"sway/language": {
+		"format": "  {}",
+		"tooltip": false
+	},
