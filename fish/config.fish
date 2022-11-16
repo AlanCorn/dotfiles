@@ -26,5 +26,9 @@ abbr -a aria2c_start aria2c --conf-path=$HOME/.config/aria2/aria2.conf -D
 
 # 配置环境变量
 set -x PATH $HOME/.yarn/bin $PATH
+# nvm配置
+# set --universal nvm_default_version v16.18.1
+# set --universal nvm_default_packages yarn np
+
 
 alias ll="exa --long --git"
