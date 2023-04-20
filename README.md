@@ -1,4 +1,8 @@
+# Preview
+## Wayfire
 ![image](https://user-images.githubusercontent.com/80396543/196081729-31fdc2db-270d-417e-b3e8-c8c52c606435.png)
+## KDE Plasma
+![image](https://user-images.githubusercontent.com/80396543/233418906-2df074f0-bbbe-404a-a22d-0ca6fc6f41fd.png)
 
 # Wayfire Dependency
 ```shell
