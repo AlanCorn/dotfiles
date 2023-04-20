@@ -4,10 +4,21 @@
 ## KDE Plasma
 ![image](https://user-images.githubusercontent.com/80396543/233418906-2df074f0-bbbe-404a-a22d-0ca6fc6f41fd.png)
 
-# Wayfire Dependency
+# Dependency
+## Normal
 ```shell
-paru -S alacritty ranger rofi waybar
+paru -S alacritty ranger kitty  neofetch fish
+paru -S nemo thunar          # file manager
+paru -S exa                  # replacement of ls
+
+``` 
+## Wayfire only
+```shell
+paru -S waybar swaybg kanshi mako rofi swayidle swaylock brightnessctl slurp grim amixer
+paru -S wl-copy wl-paste
 ```
+
+
 
 # /etc/environment
 环境变量配置，为了能够在firefox、kitty等应用上使用fcitx输入法
