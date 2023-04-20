@@ -7,7 +7,7 @@
 # Dependency
 ## Normal
 ```shell
-paru -S alacritty ranger kitty  neofetch fish
+paru -S alacritty ranger kitty  neofetch fish btop
 paru -S nemo thunar          # file manager
 paru -S exa                  # replacement of ls
 
