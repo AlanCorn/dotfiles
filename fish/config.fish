@@ -34,3 +34,5 @@ set -x PATH $HOME/.yarn/bin $PATH
 
 alias icat="kitty +kitten icat"
 alias ll="exa --long --git"
+alias vim="nvim"
+alias ra="ranger"
